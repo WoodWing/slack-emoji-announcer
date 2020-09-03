@@ -30,6 +30,12 @@ const handleRemoveEmojis = (names: string[]) => {
 };
 
 const sendMessage = (text: string) => {
-    if (!process.env.SLACK_WEBHOOK_URL) return;
+    console.log(text);
+
+    if (!process.env.SLACK_WEBHOOK_URL) return console.log('No webhook url configured. Unable to post emoji announcement message.');
+
     axios.post(process.env.SLACK_WEBHOOK_URL, JSON.stringify({text}))
+        .catch(e => {
+            console.log('Posting announcement to slack channel failed!', e);
+        });
 };
