@@ -1,31 +1,17 @@
+import { createEventAdapter } from '@slack/events-api';
 import dotenv from 'dotenv';
-import express from 'express';
-import bodyParser from 'body-parser';
 import { handleEmojiChanged } from './emoji-handler';
 
 dotenv.config();
 
-const app = express();
+const slackSigningSecret = process.env.SLACK_SIGNING_SECRET;
+const slackEvents = createEventAdapter(slackSigningSecret);
 
-app.use(bodyParser.json());
+slackEvents.on('emoji_changed', handleEmojiChanged);
+slackEvents.on('error', console.log);
 
-app.post('/', (req, res, next) => {
-    if (!req.body || !req.body.type) return res.status(200).send('ok');
-
-    switch (req.body.type) { 
-        case 'url_verification': 
-            res.status(200).send(res.json({challenge: req.body.challenge}));
-            break;
-        case 'event_callback':
-            res.status(200).send();
-            if (req.body.event.type === 'emoji_changed') handleEmojiChanged(req.body.event);
-            break;
-        default:
-            res.status(200).send();
-            break;
-    }
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port);
-console.log(`Started listening on port ${port}`);
+(async () => {
+    const port = parseInt(process.env.PORT) || 3000;
+    await slackEvents.start(port);
+    console.log(`Listening for events on ${port}`);
+})();
