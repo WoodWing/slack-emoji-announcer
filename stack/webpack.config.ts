@@ -14,7 +14,7 @@ export default <Configuration>{
         ],
     },
     resolve: {
-        extensions: ['.ts'],
+        extensions: [ '.ts', '.tsx', '.js', '.json'],
     },
     output: {
         libraryTarget: 'commonjs',

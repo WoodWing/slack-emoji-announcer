@@ -7,7 +7,7 @@ export const handle = async (event: any) => {
     if (method === 'POST' && event.path === '/') {
       let body;
       try {
-        body = JSON.stringify(handleEvent(event.headers, JSON.parse(event.body)));
+        body = JSON.stringify(await handleEvent(event.headers, JSON.parse(event.body)));
       } catch (e) {
         console.log('failed to parse event body:', e);
       }

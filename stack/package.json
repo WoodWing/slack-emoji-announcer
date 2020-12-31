@@ -29,6 +29,8 @@
     "@aws-cdk/aws-apigateway": "^1.80.0",
     "@aws-cdk/aws-lambda": "^1.80.0",
     "@aws-cdk/core": "1.80.0",
+    "@slack/events-api": "^2.3.4",
+    "axios": "^0.21.1",
     "source-map-support": "^0.5.16"
   }
 }
