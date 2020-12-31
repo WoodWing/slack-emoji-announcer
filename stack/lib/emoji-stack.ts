@@ -8,8 +8,8 @@ export class EmojiStack extends Stack {
 
     const handler = new LambdaFn(this, 'EmojiHandler', {
       runtime: Runtime.NODEJS_12_X,
-      code: Code.fromAsset('resources'),
-      handler: 'emoji.handle'
+      code: Code.fromAsset('dist', {}),
+      handler: 'handler.handle'
     });
 
     const api = new RestApi(this, 'EmojiApi');
@@ -18,6 +18,6 @@ export class EmojiStack extends Stack {
       requestTemplates: { "application/json": '{ "statusCode": "200" }' }
     });
 
-    api.root.addMethod('GET', apiRoute);
+    api.root.addMethod('POST', apiRoute);
   }
 }
