@@ -1,13 +1,13 @@
-# Welcome to your CDK TypeScript project!
+# Slack-emoji-announcer
+Posts announcements to a configured slack channel when new emojis are created.
 
-This is a blank project for TypeScript development with CDK.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## AWS Infra
+![infra](infra.svg)
 
 ## Useful commands
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
+ * `npm run build`   bundles compiled typescript
+ * `npm run build:watch`   watch for changes and compile
  * `npm run test`    perform the jest unit tests
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
