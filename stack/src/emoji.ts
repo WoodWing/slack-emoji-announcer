@@ -1,23 +1,6 @@
 import axios from 'axios';
-import { verifyRequestSignature } from '@slack/events-api';
 
-export const handleEvent = async (headers: { [key: string]: any }, body: any) => {
-  try {
-    const requestSignature = headers['X-Slack-Signature'] as string;
-    const requestTimestamp = headers['X-Slack-Request-Timestamp'] as string;
-    if (!requestSignature || !requestTimestamp) throw 'Slack request signing verification failed';
-
-    verifyRequestSignature({
-      signingSecret: process.env.SLACK_SIGNING_SECRET || '',
-      requestSignature,
-      requestTimestamp: parseInt(requestTimestamp, 10),
-      body,
-    });
-  } catch (e) {
-    console.log(e);
-    return {};
-  }
-
+export const handleEvent = async (body: any) => {
   switch (body.type) {
     case 'url_verification':
       return handleUrlVerification(body);

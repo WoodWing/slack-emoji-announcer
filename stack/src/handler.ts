@@ -1,13 +1,16 @@
 import { handleEvent } from './emoji';
+import { verifyRequest } from './verify-request';
 
 export const handle = async (event: any) => {
   try {
     var method = event.httpMethod;
 
     if (method === 'POST' && event.path === '/') {
+      if (!verifyRequest(event.headers, event.body)) return { statusCode: 200 };
+
       let body;
       try {
-        body = JSON.stringify(await handleEvent(event.headers, JSON.parse(event.body)));
+        body = JSON.stringify(await handleEvent(JSON.parse(event.body)));
       } catch (e) {
         console.log('failed to parse event body:', e);
       }
