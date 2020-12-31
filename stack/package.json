@@ -8,7 +8,8 @@
     "build": "webpack",
     "build:watch": "webpack -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "prettier": "prettier --write '**/{bin,lib,src,test}/*.ts'"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.80.0",
@@ -16,6 +17,7 @@
     "@types/node": "10.17.27",
     "aws-cdk": "1.80.0",
     "jest": "^26.4.2",
+    "prettier": "^2.2.1",
     "ts-jest": "^26.2.0",
     "ts-loader": "^8.0.13",
     "ts-node": "^9.0.0",

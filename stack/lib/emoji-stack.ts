@@ -9,13 +9,13 @@ export class EmojiStack extends Stack {
     const handler = new LambdaFn(this, 'EmojiHandler', {
       runtime: Runtime.NODEJS_12_X,
       code: Code.fromAsset('dist', {}),
-      handler: 'handler.handle'
+      handler: 'handler.handle',
     });
 
     const api = new RestApi(this, 'EmojiApi');
 
     const apiRoute = new LambdaIntegration(handler, {
-      requestTemplates: { "application/json": '{ "statusCode": "200" }' }
+      requestTemplates: { 'application/json': '{ "statusCode": "200" }' },
     });
 
     api.root.addMethod('POST', apiRoute);
