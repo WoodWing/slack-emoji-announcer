@@ -12,13 +12,9 @@
     "prettier": "prettier --write '**/{bin,lib,src,test}/*.ts'"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.146.0",
-    "@types/jest": "^26.0.24",
     "@types/node": "16.11.7",
     "aws-cdk": "1.146.0",
-    "jest": "^26.4.2",
     "prettier": "^2.5.1",
-    "ts-jest": "^26.5.6",
     "ts-loader": "^8.3.0",
     "ts-node": "^9.0.0",
     "typescript": "^3.9.10",
@@ -32,6 +28,7 @@
     "@aws-cdk/core": "1.146.0",
     "@slack/events-api": "^2.3.4",
     "axios": "^0.21.4",
+    "debug": "^4.3.3",
     "source-map-support": "^0.5.21"
   }
 }
