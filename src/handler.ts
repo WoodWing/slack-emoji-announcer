@@ -28,7 +28,7 @@ export const handle = async (event: any) => {
       body: 'We only accept POST /',
     };
   } catch (error) {
-    var body = error.stack || JSON.stringify(error, null, 2);
+    var body = (error as Error).stack || JSON.stringify(error, null, 2);
     return {
       statusCode: 400,
       headers: {},
