@@ -7,7 +7,7 @@ export const verifyRequest = (headers: { [key: string]: any }, body: any) => {
     if (!requestSignature || !requestTimestamp) throw 'Slack request signing verification failed';
 
     const params = {
-      signingSecret: process.env.SLACK_SIGNING_SECRET || '',
+      signingSecret: process.env.SLACK_SIGNING_KEY || '',
       requestSignature,
       requestTimestamp: parseInt(requestTimestamp, 10),
       body,
