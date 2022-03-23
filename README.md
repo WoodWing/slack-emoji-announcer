@@ -3,6 +3,15 @@ Posts announcements to a configured slack channel when new emojis are created.
 
 When configuring the app in Slack, make sure to subscribe to the `emoji_changed` event and create an incoming webhook to your selected channel. Make sure to create a `emoji-announcer-details` secret in AWS Secrets Manager containing `SLACK_SIGNING_KEY` and `SLACK_WEBHOOK_URL` properties.  
 
+## Slack configuration
+Create an app and setup event subscriptions as shown in the image below:
+
+![event-subscriptions](event-subscriptions.png)
+
+Setup an incoming webhook as shown in the image below:
+
+![incoming-webhooks](incoming-webhooks.png)
+
 ## AWS Infra
 ![infra](infra.svg)
 
