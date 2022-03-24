@@ -1,8 +1,25 @@
-# slack-emoji-announcer
-Posts messages to configured channel when emojis are added to your workspace. 
+# Slack-emoji-announcer
+Posts announcements to a configured slack channel when new emojis are created.
 
-When configuring the app in Slack, make sure to subscribe to the `emoji_changed` event and create an incoming webhook to your selected channel. Copy the `.env.dist` file to `.env` and add the signing secret and webhook url for your app to it.
+When configuring the app in Slack, make sure to subscribe to the `emoji_changed` event and create an incoming webhook to your selected channel. Make sure to create a `emoji-announcer-details` secret in AWS Secrets Manager containing `SLACK_SIGNING_KEY` and `SLACK_WEBHOOK_URL` properties.  
 
-Run `npm install` and `npm run dev` to start developing.
+## Slack configuration
+Create an app and setup event subscriptions as shown in the image below:
 
-To run the emoji-announcer in production, either install `ts-node` globally and run `ts-node server.ts` or run `npm run build` and run `node ./dist/server.js`.
+![event-subscriptions](event-subscriptions.png)
+
+Setup an incoming webhook as shown in the image below:
+
+![incoming-webhooks](incoming-webhooks.png)
+
+## AWS Infra
+![infra](infra.svg)
+
+## Useful commands
+
+ * `npm run build`   bundles compiled typescript
+ * `npm run build:watch`   watch for changes and compile
+ * `npm run test`    perform the jest unit tests
+ * `cdk deploy`      deploy this stack to your default AWS account/region
+ * `cdk diff`        compare deployed stack with current state
+ * `cdk synth`       emits the synthesized CloudFormation template
